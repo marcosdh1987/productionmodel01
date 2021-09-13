@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Form</title>
+</head>
+
+
+<section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.jpg');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Submit data for production prediction</h2>
+  
+                <form method="post">
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label"  for="form3Example1cg" >Line Pressure [Bar]</label>
+                    <input type="number" name="press" value="42" class="form-control form-control-lg" />
+                    
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label"  for="form3Example3cg">Differential Pressure [Bar]</label>
+                    <input type="text" name="dp" value="0.52" class="form-control form-control-lg" />
+                    
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4cg">Temperature[C]</label>
+                    <input type="number" name="temp"  value="27" class="form-control form-control-lg" />
+                    
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label"  for="form3Example4cdg">Velocity[m/s]</label>
+                    <input type="number" name="vel" value="31" class="form-control form-control-lg" />
+                    
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label"  for="form3Example4cdg">LiqDen[kg/m3]</label>
+                    <input type="number" name="liqden" value="720" class="form-control form-control-lg" />
+                    
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label"  for="form3Example4cdg">WaterCut[%]</label>
+                    <input type="number" name="wc" value="12" class="form-control form-control-lg" />
+                    
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label"  for="form3Example4cdg">Choke</label>
+                    <input type="number" name="choke" value="14" class="form-control form-control-lg" />
+                    
+                  </div>
+  
+                  
+  
+                  <div class="d-flex justify-content-center">
+                    <input type="submit" type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">  
+                    
+                  </div>
+  
+                  
+                </form>
+
+
+                
+              
+  
+              </div>
+
+              <h2 class="text-uppercase text-center mb-5">{{ text }}  {{ result }} </h2>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </html>

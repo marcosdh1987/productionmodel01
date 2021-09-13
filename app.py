@@ -1,11 +1,14 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Form
+#to use templates
+from fastapi.templating import Jinja2Templates
+
+
+#to data handle
 import pandas as pd
 
 # ML import
 import joblib,os,io
-
-# Vectorizer
 
 
 #Models
@@ -17,15 +20,34 @@ print ('Model columns loaded',model_columns)
     
 #init app
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
 # Routes
 @app.get('/')
-async def index():
-    return {'text':'welcome'}
+def index(request: Request):
+    result = "Type a number"
+    return templates.TemplateResponse("form.html", context={"request":request, 'result': result})
 
-@app.get('/items/{name}')
-async def get_items(name):
-    return {"name":name}
+@app.post('/')
+async def form_post(request: Request, press: float = Form(...), dp: str = Form(...), temp : float = Form(...),
+                vel : float = Form(...),liqden : float = Form(...),wc : float = Form(...),choke : float = Form(...)):
+    
+
+    df = pd.DataFrame(columns = model_columns)
+    df = df.append({'Pressure[Bar]': press, 'DP[Bar]': dp, 'Temperature[C]': temp, 'Velocity[m/s]':vel,
+                    'LiqDen[kg/m3]':liqden, 'WaterCut[%]':wc, 'choke':choke}, ignore_index=True)
+    
+
+    prediction = lr.predict(df)
+    result = str(prediction)
+    result = [result.replace("[", "").replace("]", "")]
+    
+
+
+    return templates.TemplateResponse("form.html", context={"request":request,'text':"The predicted Gas production is: " ,'result': result[0]})
+
+
+
 
 # ML app
 @app.get('/predict/')
