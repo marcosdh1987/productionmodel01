@@ -27,3 +27,8 @@ pip install -r requirements.txt
 python app.py
 
 uvicorn app:app --reload
+
+
+## Example
+
+![image](https://user-images.githubusercontent.com/31476977/133299236-8ca8c7f3-bc4d-4d0c-a88e-3498fed58365.png)
