@@ -6,9 +6,11 @@ from fastapi.templating import Jinja2Templates
 
 #to data handle
 import pandas as pd
+import tensorflow as tf
 
 # ML import
 import joblib,os,io
+import numpy as np
 
 
 #Models
@@ -37,14 +39,19 @@ async def form_post(request: Request, press: float = Form(...), dp: str = Form(.
     df = df.append({'Pressure[Bar]': press, 'DP[Bar]': dp, 'Temperature[C]': temp, 'Velocity[m/s]':vel,
                     'LiqDen[kg/m3]':liqden, 'WaterCut[%]':wc, 'choke':choke}, ignore_index=True)
     
-
-    prediction = lr.predict(df)
+    print(df.head())
+    #prediction = lr.predict(df)
+    data_tensor =np.array(df.astype(np.float32))
+    #data_tensor = tf. convert_to_tensor(df.values)
+    print(data_tensor)
+    prediction = lr.predict(data_tensor)
+    #result = df
     result = str(prediction)
     result = [result.replace("[", "").replace("]", "")]
     
 
 
-    return templates.TemplateResponse("form.html", context={"request":request,'text':"The predicted Gas production is: " ,'result': result[0]})
+    return templates.TemplateResponse("form.html", context={"request":request,'text':"The predicted Gas production is: " ,'result': result[0], 'unit':" m3/D"})
 
 
 

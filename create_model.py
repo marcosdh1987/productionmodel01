@@ -58,6 +58,11 @@ print("the model error is ",f": {mean_squared_error(y_valid, preds_valid, square
 
 print("Saving model....")
 # Save your model
-import joblib
-joblib.dump(model, 'gas_model.pkl')
+#import joblib
+#joblib.dump(model, 'gas_model.pkl')
+
+import pickle
+with open('gas_model.pkl', 'wb') as file:
+  pickle.dump(model, file=file)
+
 print("Model dumped!")
