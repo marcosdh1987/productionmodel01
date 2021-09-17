@@ -17,7 +17,6 @@ sudo apt-get install python3-pip
 
 sudo pip3 install virtualenv 
 
-virtualenv env 
 
 source ./env/bin/activate
 ## Env requirements
