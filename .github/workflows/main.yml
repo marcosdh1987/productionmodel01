@@ -71,7 +71,7 @@ jobs:
         env:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_default_region: us-east-2
+          aws_region: us-east-2
       # Step 2
       - name: Download Lambda api.zip
         uses: actions/download-artifact@v2
@@ -83,7 +83,7 @@ jobs:
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_default_region: us-east-2
+          aws_region: us-east-2
   
   
   # Step 3
@@ -92,11 +92,11 @@ jobs:
         env:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_default_region: us-east-2
+          aws_region: us-east-2
   # Step 4
       - name: Deploy new Lambda
         run: aws lambda update-function-code --function-name mlprodapifunction --s3-bucket mlprodapi --s3-key api.zip
         env:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_default_region: us-east-2
+          aws_region: us-east-2
