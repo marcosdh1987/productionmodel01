@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI, Request, Form
 #to use templates
 from fastapi.templating import Jinja2Templates
-from mangum import Mangum  # <---------- import Mangum library
+from mangum import Mangum  # <---------- import Mangum library for lambda function
 
 #to data handle
 import pandas as pd
