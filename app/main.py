@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI, Request, Form
 #to use templates
 from fastapi.templating import Jinja2Templates
-
+from mangum import Mangum  # <---------- import Mangum library
 
 #to data handle
 import pandas as pd
@@ -21,7 +21,10 @@ print ('Model columns loaded',model_columns)
 
     
 #init app
-app = FastAPI()
+app = FastAPI(title='Serverless Lambda FastAPI')
+
+handler = Mangum(app=app) # <----------- wrap the API with Mangum
+
 templates = Jinja2Templates(directory="templates")
 
 # Routes
