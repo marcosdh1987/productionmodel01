@@ -27,6 +27,7 @@ keras==2.6.0
 keras-nightly==2.7.0.dev2021091407
 Keras-Preprocessing==1.1.2
 libclang==11.1.0
+mangum==0.12.2
 Markdown==3.3.4
 MarkupSafe==2.0.1
 numpy==1.19.5
