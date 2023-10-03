@@ -14,6 +14,6 @@ tb-nightly==2.7.0a20210914
 tf-estimator-nightly==2.7.0.dev2021091408
 tf-nightly==2.7.0.dev20210914
 
-urllib3==1.26.6
+urllib3==1.26.17
 uvicorn==0.15.0
 
